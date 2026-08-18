@@ -1,0 +1,847 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* ========== Global Reset ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0d1117;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.blur_back {
+    transition: filter 0.3s ease;
+}
+
+.blur_back.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+/* ========== MAIN CONTAINER ========== */
+.page {
+
+    max-width: 900px;
+    width: 95%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #161b22;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+/* =====================================================
+    HEADPAGE SECTION
+===================================================== */
+.headpage {
+    position: relative;
+    height: 140px;
+    background: linear-gradient(135deg, #0b4e6d, #09709d, #06b6d4);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Header title */
+.headpage h1 {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* LinkedIn icon (Repositioned and restyled) */
+.headpage .linkdin {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 30px;
+    width: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 9px solid #0a0b0b;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.headpage .linkdin:hover {
+    transform: scale(1.1);
+}
+
+.linkdin img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Profile photo inside header */
+.profile {
+    height: 140px;
+    width: 140px;
+
+    border: solid 5px #06b6d4;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    left: 40px;
+    bottom: -70px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.profile img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* =====================================================
+    BODYPAGE SECTION
+===================================================== */
+.bodypage {
+    border-radius: 12px;
+    margin-top: 100px;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =====================================================
+    SECTIONS: ABOUT, SKILLS, PROJECTS
+===================================================== */
+.about,
+.skills,
+.projects {
+
+    border-radius: 12px;
+    margin: 0;
+    background-color: #1f2937;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.about:hover,
+.skills:hover,
+.projects:hover {
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Section Headings */
+.about h3,
+.skills-header h3,
+.projectsHeader h3 {
+    margin-bottom: 12px;
+    color: #06b6d4;
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+    text-align: left;
+}
+
+.skills-header h3,
+.projectsHeader h3 {
+    text-align: center;
+}
+
+
+/* About Paragraph */
+.about p {
+    color: #a0aec0;
+    line-height: 1.6;
+}
+
+/* =====================================================
+    SKILLS SECTION
+===================================================== */
+.skills {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-header {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+/* Skill cards */
+.skillCard {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    perspective: 800px;
+    margin: 5px 0;
+
+    transform-style: preserve-3d;
+}
+
+.skillcard_front,
+.skillcard_back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+}
+
+.skillcard_front {
+    border: 2px solid #374151;
+    background-color: #374151;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transform: rotateY(0deg);
+}
+
+.skillcard_front img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.skillcard_back {
+
+    background-color: #06b6d4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transform: rotateY(180deg);
+}
+
+.icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    height: 30px;
+    width: 30px;
+    filter: brightness(0) invert(1);
+}
+
+/* Flip effect */
+.skillCard:hover .skillcard_front {
+    transform: rotateY(180deg);
+}
+
+.skillCard:hover .skillcard_back {
+    transform: rotateY(0deg);
+}
+
+.skillCard:hover .icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.skillone,
+.skilltwo,
+.skillthree,
+.skillfour,
+.skillfive,
+.skillsix {
+    height: 500px;
+    width: 950px;
+    background: rgba(12, 20, 25, 0.4);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1.5px solid rgba(6, 182, 212, 0.5);
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    box-shadow:
+        0 0 30px rgba(6, 182, 212, 0.15),
+        0 0 60px rgba(6, 182, 212, 0.08),
+        0 20px 40px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    display: flex;
+}
+
+.skillone.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.skilltwo.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.skillthree.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.skillfour.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.skillfive.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.skillsix.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.skillborder {
+    margin: auto;
+    height: 97%;
+    width: 97%;
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.4);
+
+}
+
+.c_close {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 15px;
+    right: 19px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 0 2px #06b6d4);
+}
+
+.c_close:hover {
+    transform: scale(1.1);
+
+}
+
+.certificate {
+    height: 400px;
+    width: 400px;
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.certificate img {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.C_details {
+    height: 400px;
+    width: 400px;
+    margin: auto;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+}
+
+.C_details h3 {
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.c_info li {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin: 6px 0;
+    list-style: none;
+    border-left: 3px solid #06b6d4;
+    transition: 0.2s;
+}
+
+.c_info li:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =====================================================
+    PROJECTS SECTION
+===================================================== */
+.projects {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projectsHeader {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+
+.project_card {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    perspective: 600px;
+    background: linear-gradient(32deg, rgb(0 0 0) 0%, rgb(26 53 48) 50%, rgb(49 84 74) 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border-top: 4px solid #06b6d4;
+    transition: transform 0.5s ease;
+    margin: 5px;
+}
+
+.project_card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+    background: linear-gradient(32deg, rgb(0 0 0) 0%, rgb(55, 85, 79) 50%, rgb(100, 186, 161) 100%);
+}
+
+.project_card h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.linkToProject {
+    height: 40px;
+    width: 170px;
+    border: 2px solid #06b6d4;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+
+
+}
+
+.project_card:hover .linkToProject {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 1;
+}
+
+.linkToProject:hover {
+    background-color: rgb(0, 181, 231);
+}
+
+.linkToProject img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    left: 50px;
+}
+
+.projectOne,
+.projectTwo,
+.projectThree,
+.projectFour {
+    height: 450px;
+    width: 480px;
+    background-color: rgb(21, 11, 11);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 12px;
+    border: 2px solid black;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    display: flex;
+}
+
+.projectOne.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.projectTwo.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.projectThree.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.projectFour.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.card_border h1 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    ;
+
+}
+
+.card_border {
+    margin: auto;
+    height: 97%;
+    width: 97%;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(178, 237, 243, 0.366);
+    border-radius: 10px;
+    background-color: rgba(30, 31, 32, 0.4);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+.cardDesign {
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 100% 0% 100% 0% / 0% 50% 50% 100%;
+    background: linear-gradient(32deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    margin-bottom: 20px;
+}
+
+.bCardDesign {
+    position: absolute;
+    bottom: 0;
+    left: 106px;
+    width: 77%;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(32deg, rgba(42, 123, 155, 1), rgba(87, 199, 133, 1), rgba(237, 221, 83, 1));
+    border-radius: 100% 3% 3% 49% / 100% 6% 36% 2%;
+}
+
+
+.closebtn {
+    width: 30px;
+    height: 30px;
+    float: right;
+    cursor: pointer;
+    filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.6));
+    transition: transform 0.2s ease;
+}
+
+.closebtn:hover {
+    transform: scale(1.15);
+}
+
+.gitlink {
+    height: 40px;
+    width: 40px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+}
+
+.gitlink:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(8, 201, 235, 0.7);
+}
+
+.gitlink img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+
+}
+
+.Pdetails1 {
+    width: 90%;
+    margin: 10px auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e5e7eb;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+    animation: fadeUp 0.5s ease-out;
+}
+
+.Pdetails1 h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #06b6d4;
+    letter-spacing: 1px;
+}
+
+.p_desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cbd5e1;
+    text-align: justify;
+    margin-bottom: 12px;
+}
+
+.p_tech {
+    list-style: none;
+    padding-left: 0;
+}
+
+.p_tech li {
+    font-size: 14px;
+    background: rgba(6, 182, 212, 0.08);
+    border-left: 3px solid #06b6d4;
+    padding: 6px 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.p_tech li:hover {
+    background: rgba(6, 182, 212, 0.15);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+    FOOTER SECTION
+===================================================== */
+.footer {
+    height: 60px;
+    border-radius: 12px;
+    margin-top: 30px;
+    background-color: #1f2937;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.git,
+.mail {
+    height: 35px;
+    width: 35px;
+    background-color: #374151;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: 1px solid #4a5568;
+    transition: transform 0.2s, background-color 0.2s;
+    overflow: hidden;
+}
+
+.git:hover,
+.mail:hover {
+    transform: translateY(-2px);
+    background-color: #06b6d4;
+}
+
+.git img,
+.mail img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 5px;
+    box-sizing: border-box;
+    filter: brightness(0) invert(1);
+}
+
+
+/* =====================================================
+    RESPONSIVE DESIGN
+===================================================== */
+@media (max-width: 600px) {
+
+    /* Main page container for small screens */
+    .page {
+        padding: 10px;
+        margin: 10px auto;
+        width: 100%;
+        min-height: auto;
+    }
+
+    /* Profile in headpage */
+    .profile {
+        height: 90px;
+        width: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -45px;
+        border-width: 3px;
+    }
+
+    /* Adjust margins for small screens */
+    .bodypage {
+        margin-top: 60px;
+        gap: 15px;
+    }
+
+    .headpage h1 {
+        font-size: 2rem;
+        padding-top: 20px;
+    }
+
+    .headpage {
+        height: 100px;
+    }
+
+    /* Skills cards for small screens */
+    .skillCard {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Project cards for small screens */
+    .project_card {
+        width: 100%;
+        height: 150px;
+        margin: 5px 0;
+    }
+
+    .linkToProject {
+        width: 120px;
+        height: 30px;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Modal adjustments */
+    .projectOne,
+    .projectTwo {
+        height: 90%;
+        width: 90%;
+    }
+
+    .skillone,
+    .skilltwo,
+    .skillthree,
+    .skillfour,
+    .skillfive,
+    .skillsix {
+        width: 90%;
+        height: 98%;
+    }
+
+    .certificate,
+    .C_details {
+        width: 90%;
+        height: 200px
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .page {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .skillone,
+    .skilltwo,
+    .skillthree,
+    .skillfour,
+    .skillfive,
+    .skillsix {
+        width: 700px;
+    }
+
+    .certificate,
+    .C_details {
+        width: 300px;
+        height: 400px;
+    }
+}

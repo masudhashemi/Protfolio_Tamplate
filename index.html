@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Masud Hashemi — web developer." />
+  <title>Masud Hashemi — Portfolio</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- =========== NAVBAR =========== -->
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#top">
+      <span class="brand-mark" id="brandMark">MH</span>
+      <span class="brand-name" id="brandName">Masud Hashemi</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Section navigation"></nav>
+
+    <div class="topbar-actions">
+      <a class="btn btn-ghost btn-sm" id="navResume" href="#" target="_blank" rel="noopener" hidden>Résumé</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="blur_back" id="blurBack">
+    <main class="page" id="top">
+
+      <!-- =========== HERO =========== -->
+      <section class="headpage reveal" id="hero">
+        <div class="headpage-glow" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+          <p class="hero-status" id="heroStatus"></p>
+          <h1 id="heroName">Masud Hashemi</h1>
+          <p class="hero-role"><span id="heroRole"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="hero-tagline" id="heroTagline"></p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-ghost" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-socials" id="heroSocials"></div>
+
+        <div class="profile">
+          <img id="heroPhoto" src="pictures/profile.jpg" alt="Profile" />
+        </div>
+      </section>
+
+      <div class="bodypage">
+
+        <!-- =========== STATS =========== -->
+        <section class="stats reveal" id="statsStrip" aria-label="Key figures"></section>
+
+        <!-- =========== ABOUT =========== -->
+        <section class="about reveal" id="about">
+          <div class="section-head">
+            <h3 id="aboutHeading">About Me</h3>
+          </div>
+          <p id="aboutBody"></p>
+          <ul class="about-highlights" id="aboutHighlights"></ul>
+          <p class="about-meta" id="aboutMeta"></p>
+        </section>
+
+        <!-- =========== SKILLS =========== -->
+        <section class="skills reveal" id="skills">
+          <div class="skills-header section-head">
+            <h3>Skills</h3>
+            <p class="section-sub">Hover a badge, click to open its certificate.</p>
+          </div>
+          <div class="skills-grid" id="skillsGrid"></div>
+          <div class="skill-bars" id="skillBars"></div>
+        </section>
+
+        <!-- =========== JOURNEY =========== -->
+        <section class="journey reveal" id="journey">
+          <div class="section-head">
+            <h3>Journey</h3>
+            <p class="section-sub">Experience and education, most recent first.</p>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </section>
+
+        <!-- =========== SERVICES =========== -->
+        <section class="services reveal" id="services">
+          <div class="section-head">
+            <h3>What I Do</h3>
+            <p class="section-sub">Ways I can help on a project.</p>
+          </div>
+          <div class="services-grid" id="servicesGrid"></div>
+        </section>
+
+        <!-- =========== PROJECTS =========== -->
+        <section class="projects reveal" id="projects">
+          <div class="projectsHeader section-head">
+            <h3>Projects</h3>
+            <p class="section-sub">Selected work — click a card for details.</p>
+          </div>
+          <div class="filter-bar" id="projectFilters"></div>
+          <div class="projects-grid" id="projectsGrid"></div>
+        </section>
+
+        <!-- =========== CERTIFICATES =========== -->
+        <section class="certificates reveal" id="certificates">
+          <div class="section-head">
+            <h3>Certificates</h3>
+            <p class="section-sub">Verified course completions.</p>
+          </div>
+          <div class="cert-grid" id="certGrid"></div>
+        </section>
+
+        <!-- =========== TESTIMONIALS =========== -->
+        <section class="testimonials reveal" id="testimonials">
+          <div class="section-head">
+            <h3>Kind Words</h3>
+          </div>
+          <div class="testimonial-track" id="testimonialTrack"></div>
+        </section>
+
+        <!-- =========== CONTACT =========== -->
+        <section class="contact reveal" id="contact">
+          <div class="section-head">
+            <h3 id="contactHeading">Get In Touch</h3>
+            <p class="section-sub" id="contactBlurb"></p>
+          </div>
+
+          <div class="contact-wrap">
+            <ul class="contact-details" id="contactDetails"></ul>
+
+            <form class="contact-form" id="contactForm" novalidate>
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" required placeholder="Your name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" required placeholder="you@example.com" />
+              </label>
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="4" required placeholder="Tell me about your project…"></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <p class="form-note" id="formNote" role="status"></p>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- =========== FOOTER =========== -->
+      <footer class="footer">
+        <p class="footer-text" id="footerText"></p>
+        <div class="footer-socials" id="footerSocials"></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+  <!-- =========== SHARED MODALS =========== -->
+  <div class="modal skill-modal" id="skillModal" role="dialog" aria-modal="true" aria-label="Certificate details">
+    <div class="skillborder">
+      <img src="icons/cross.png" alt="Close" class="c_close" data-close />
+      <div class="certificate" id="certImageWrap"><img id="certImage" src="" alt="Certificate" /></div>
+      <div class="C_details">
+        <h3 id="certTitle"></h3>
+        <ul class="c_info" id="certInfo"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal project-modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="card_border">
+      <img src="icons/cross.png" alt="Close" class="closebtn" data-close />
+      <div class="cardDesign">
+        <h1 id="projTitle"></h1>
+      </div>
+      <div class="Pdetails1">
+        <h2>Project Overview</h2>
+        <p class="p_desc" id="projDesc"></p>
+        <ul class="p_tech" id="projTech"></ul>
+      </div>
+      <div class="bCardDesign"></div>
+      <div class="modal-links">
+        <a class="gitlink" id="projRepo" href="#" target="_blank" rel="noopener" title="Source code">
+          <img src="icons/github2.png" alt="Repository" />
+        </a>
+        <a class="btn btn-ghost btn-sm" id="projDemo" href="#" target="_blank" rel="noopener" hidden>Live demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="portfolio-data.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

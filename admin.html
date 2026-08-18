@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Portfolio Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+  <header class="admin-top">
+    <div class="admin-brand">
+      <span class="mark">⚙</span>
+      <div>
+        <h1>Portfolio Admin <span class="dirty-dot" id="dirtyDot" title="Unsaved changes"></span></h1>
+        <p id="savedInfo">Edit every detail of your site — no code required.</p>
+      </div>
+    </div>
+
+    <div class="admin-actions" id="adminActions">
+      <a class="btn" href="index.html" target="_blank" rel="noopener">👁 View site</a>
+      <button class="btn btn-danger" id="resetBtn">↺ Reset to defaults</button>
+      <button class="btn btn-primary" id="saveBtn">💾 Save changes</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+
+    <nav class="admin-nav" id="adminNav">
+      <button class="active" data-panel="profile">👤 Profile</button>
+      <button data-panel="about">📝 About</button>
+      <button data-panel="stats">📊 Stats</button>
+      <button data-panel="skills">⚡ Skills</button>
+      <button data-panel="journey">🧭 Journey</button>
+      <button data-panel="services">🛠 Services</button>
+      <button data-panel="projects">💼 Projects</button>
+      <button data-panel="testimonials">💬 Testimonials</button>
+      <button data-panel="socials">🔗 Links &amp; Nav</button>
+      <button data-panel="contact">✉️ Contact</button>
+      <button data-panel="theme">🎨 Theme</button>
+      <button data-panel="data">🗃 Backup</button>
+    </nav>
+
+    <main class="admin-main">
+
+      <!-- ---------- PROFILE ---------- -->
+      <section class="panel active" id="panel-profile">
+        <div class="panel-head">
+          <h2>Profile</h2>
+          <p>Your name, roles and hero section content.</p>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="p-name">Full name</label>
+            <input type="text" id="p-name" data-bind="profile.name" />
+          </div>
+          <div class="field">
+            <label for="p-location">Location</label>
+            <input type="text" id="p-location" data-bind="profile.location" />
+          </div>
+          <div class="field">
+            <label for="p-availability">Availability badge <span class="hint">e.g. "Open to work"</span></label>
+            <input type="text" id="p-availability" data-bind="profile.availability" />
+          </div>
+          <div class="field">
+            <label for="p-email">Email</label>
+            <input type="email" id="p-email" data-bind="profile.email" />
+          </div>
+          <div class="field">
+            <label for="p-phone">Phone <span class="hint">optional</span></label>
+            <input type="text" id="p-phone" data-bind="profile.phone" />
+          </div>
+          <div class="field">
+            <label for="p-resume">Résumé link <span class="hint">optional, shows a button in the navbar</span></label>
+            <input type="text" id="p-resume" data-bind="profile.resumeUrl" />
+          </div>
+          <div class="field full">
+            <label for="p-roles">Rotating roles <span class="hint">one per line — typed out in the hero</span></label>
+            <textarea id="p-roles" rows="4" data-bind="profile.roles" data-type="lines"></textarea>
+          </div>
+          <div class="field full">
+            <label for="p-tagline">Tagline</label>
+            <textarea id="p-tagline" rows="2" data-bind="profile.tagline"></textarea>
+          </div>
+          <div class="field">
+            <label for="p-photo">Profile photo path</label>
+            <input type="text" id="p-photo" data-bind="profile.photo" data-preview="p-photo-prev" />
+          </div>
+          <div class="field">
+            <label>Preview</label>
+            <img class="thumb-preview" id="p-photo-prev" src="" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- ABOUT ---------- -->
+      <section class="panel" id="panel-about">
+        <div class="panel-head">
+          <h2>About</h2>
+          <p>The introduction paragraph and its bullet highlights.</p>
+        </div>
+
+        <div class="field-grid">
+          <div class="field full">
+            <label for="a-heading">Section heading</label>
+            <input type="text" id="a-heading" data-bind="about.heading" />
+          </div>
+          <div class="field full">
+            <label for="a-body">About text</label>
+            <textarea id="a-body" rows="6" data-bind="about.body"></textarea>
+          </div>
+          <div class="field full">
+            <label for="a-highlights">Highlights <span class="hint">one per line</span></label>
+            <textarea id="a-highlights" rows="4" data-bind="about.highlights" data-type="lines"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- REPEATER PANELS ---------- -->
+      <section class="panel" id="panel-stats">
+        <div class="panel-head">
+          <h2>Stats</h2>
+          <button class="btn btn-sm" data-add="stats">+ Add stat</button>
+          <p>The counting figures shown under the hero.</p>
+        </div>
+        <div class="item-list" id="list-stats"></div>
+      </section>
+
+      <section class="panel" id="panel-skills">
+        <div class="panel-head">
+          <h2>Skills &amp; Certificates</h2>
+          <button class="btn btn-sm" data-add="skills">+ Add skill</button>
+          <p>Each skill shows a badge, a proficiency bar and its certificate modal.</p>
+        </div>
+        <div class="item-list" id="list-skills"></div>
+      </section>
+
+      <section class="panel" id="panel-journey">
+        <div class="panel-head">
+          <h2>Journey</h2>
+          <button class="btn btn-sm" data-add="journey">+ Add entry</button>
+          <p>Experience and education, shown as a timeline in the order listed here.</p>
+        </div>
+        <div class="item-list" id="list-journey"></div>
+      </section>
+
+      <section class="panel" id="panel-services">
+        <div class="panel-head">
+          <h2>Services</h2>
+          <button class="btn btn-sm" data-add="services">+ Add service</button>
+          <p>What you offer. The icon field takes any emoji.</p>
+        </div>
+        <div class="item-list" id="list-services"></div>
+      </section>
+
+      <section class="panel" id="panel-projects">
+        <div class="panel-head">
+          <h2>Projects</h2>
+          <button class="btn btn-sm" data-add="projects">+ Add project</button>
+          <p>Tags become the filter buttons on the site.</p>
+        </div>
+        <div class="item-list" id="list-projects"></div>
+      </section>
+
+      <section class="panel" id="panel-testimonials">
+        <div class="panel-head">
+          <h2>Testimonials</h2>
+          <button class="btn btn-sm" data-add="testimonials">+ Add testimonial</button>
+          <p>Leave this list empty to hide the section entirely.</p>
+        </div>
+        <div class="item-list" id="list-testimonials"></div>
+      </section>
+
+      <section class="panel" id="panel-socials">
+        <div class="panel-head">
+          <h2>Links &amp; Navigation</h2>
+          <p>Social icons appear in the hero and footer. Nav targets must match a section id.</p>
+        </div>
+
+        <div class="panel-head" style="border:none;margin-top:6px;padding:0">
+          <h2 style="font-size:1.05rem">Social links</h2>
+          <button class="btn btn-sm" data-add="socials">+ Add link</button>
+        </div>
+        <div class="item-list" id="list-socials"></div>
+
+        <div class="panel-head" style="border:none;margin-top:22px;padding:0">
+          <h2 style="font-size:1.05rem">Navigation menu</h2>
+          <button class="btn btn-sm" data-add="nav">+ Add item</button>
+        </div>
+        <div class="item-list" id="list-nav"></div>
+      </section>
+
+      <!-- ---------- CONTACT ---------- -->
+      <section class="panel" id="panel-contact">
+        <div class="panel-head">
+          <h2>Contact</h2>
+          <p>The contact form opens the visitor's mail app addressed to you.</p>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="c-heading">Heading</label>
+            <input type="text" id="c-heading" data-bind="contact.heading" />
+          </div>
+          <div class="field">
+            <label for="c-email">Contact email</label>
+            <input type="email" id="c-email" data-bind="contact.email" />
+          </div>
+          <div class="field">
+            <label for="c-phone">Phone <span class="hint">optional</span></label>
+            <input type="text" id="c-phone" data-bind="contact.phone" />
+          </div>
+          <div class="field">
+            <label for="c-location">Location</label>
+            <input type="text" id="c-location" data-bind="contact.location" />
+          </div>
+          <div class="field full">
+            <label for="c-blurb">Intro line</label>
+            <textarea id="c-blurb" rows="2" data-bind="contact.blurb"></textarea>
+          </div>
+          <div class="field full">
+            <label class="check">
+              <input type="checkbox" id="c-form" data-bind="contact.formEnabled" data-type="bool" />
+              Show the message form
+            </label>
+          </div>
+          <div class="field full">
+            <label for="f-text">Footer text</label>
+            <input type="text" id="f-text" data-bind="footer.text" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- THEME ---------- -->
+      <section class="panel" id="panel-theme">
+        <div class="panel-head">
+          <h2>Theme &amp; Meta</h2>
+          <p>Browser tab title, icon and the accent colour used across the site.</p>
+        </div>
+
+        <div class="field-grid">
+          <div class="field full">
+            <label for="m-title">Browser tab title</label>
+            <input type="text" id="m-title" data-bind="meta.siteTitle" />
+          </div>
+          <div class="field">
+            <label for="m-favicon">Favicon emoji</label>
+            <input type="text" id="m-favicon" data-bind="meta.favicon" maxlength="4" />
+          </div>
+          <div class="field">
+            <label for="m-accent">Accent colour</label>
+            <input type="color" id="m-accent" data-bind="meta.accent" />
+          </div>
+          <div class="field">
+            <label for="m-accent2">Accent (deep)</label>
+            <input type="color" id="m-accent2" data-bind="meta.accentSoft" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- DATA ---------- -->
+      <section class="panel" id="panel-data">
+        <div class="panel-head">
+          <h2>Backup &amp; Publish</h2>
+          <p>Saved edits live in this browser only. Download the data file and replace
+            <code>portfolio-data.js</code> in your project to publish them for everyone.</p>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <h3>Publish permanently</h3>
+            <p>Downloads a ready-made <code>portfolio-data.js</code>. Drop it into your project folder,
+              replacing the old one, and commit.</p>
+            <button class="btn btn-primary" id="downloadJsBtn">⬇ Download data file</button>
+          </div>
+
+          <div class="data-card">
+            <h3>Export / import JSON</h3>
+            <p>Keep a backup of your content, or move it to another browser or machine.</p>
+            <div class="admin-actions">
+              <button class="btn" id="exportBtn">⬇ Export JSON</button>
+              <button class="btn" id="importBtn">⬆ Import JSON</button>
+              <input type="file" id="importFile" accept="application/json,.json" hidden />
+            </div>
+          </div>
+
+          <div class="data-card" style="grid-column:1/-1">
+            <h3>Raw content</h3>
+            <p>Advanced: edit the JSON directly, then apply it. Invalid JSON is rejected.</p>
+            <textarea class="json-view" id="jsonView" spellcheck="false"></textarea>
+            <div class="admin-actions" style="margin-top:12px">
+              <button class="btn" id="applyJsonBtn">Apply JSON</button>
+              <button class="btn" id="refreshJsonBtn">Refresh view</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="portfolio-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>
